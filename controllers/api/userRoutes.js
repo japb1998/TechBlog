@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const bcrypt = require("bcrypt");
 const {
     User
 } = require('../../models');
@@ -7,7 +8,7 @@ const {
 router.post('/', async (req, res) => {
     try {
         //User model
-        let userData = await User.create(req.body);
+        const  userData = await User.create(req.body);
 
         req.session.save(() => {
             req.session.user_id = userData.id;

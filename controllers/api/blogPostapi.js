@@ -19,7 +19,7 @@ try{
     const newData = await BlogPost.create({
     title: req.body.title,
     content:req.body.content,
-    // user_id: req.body.user_id
+    user_id: req.body.user_id
     });
 
     res.status(200).json(newData);
