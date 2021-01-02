@@ -6,8 +6,8 @@ const pass = $('#inputPassword')
 function login(){
    
 const userData = {
-    name: userInput.val().trim(),
-    password: pass.val().trim()
+    email: userInput.val(),
+    password: pass.val()
 }
 
 if(!userInput.val()){
@@ -17,15 +17,12 @@ if(!pass.val()){
     alert('Incorrect email or password, please try again')
 }
 console.log(userData);
-    $.ajax({
-        type: "POST",
-        url:'/api/users/login',
-        data: userData
-      })
+    $.post('/api/users/login',userData).then(()=>{document.location.href='/'})
 };
 
 
 submitBtn.on('click',(e)=>{
     e.preventDefault();
     login();
+    
 })
