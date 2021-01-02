@@ -13,7 +13,7 @@ function createComment(){
     console.log('click');
     if(!$(this).siblings('textarea').val()){
         alert('Comment body can not be empty');
-        return
+        return;
     }
 $.post('/api/blog/comment',
 {
