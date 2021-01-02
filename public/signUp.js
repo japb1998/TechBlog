@@ -28,9 +28,11 @@ if(!userName.val()){
 }
 console.log(JSON.stringify(newUser))
 $.post('/api/users/',newUser).then((res)=>{
-    if(res.ok){
+    
         alert('User has been created')
-    }
+    
+}).catch((err)=>{
+    alert('Please try again')
 })
 }
 

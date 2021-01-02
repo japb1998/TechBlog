@@ -70,10 +70,14 @@ console.log(userInfo)
         //     plain: true
         //   })
         //   console.log(userName)
-          const getComments = await Comment.findAll({
-            where: {
-              blog_id: req.params.id
-            }});
+          const getComments = await Comment.findAll({include: [
+            {
+              model: User,
+              attributes: ['name'],
+            },
+          ],  where: {
+            blog_id: req.params.id
+          }});
       
           const comments = getComments.map((comment) => comment.get({
             plain: true
