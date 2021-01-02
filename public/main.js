@@ -13,16 +13,20 @@ function logOut(){
 };
 
 function createComment(){
+   const textArea = $(this).siblings('textarea')
     console.log('click');
-    if(!$(this).siblings('textarea').val()){
+    if(!textArea.val()){
         alert('Comment body can not be empty');
         return;
     }
 $.post('/api/blog/comment',
 {
-    comment_body:$(this).siblings('textarea').val(),
+    comment_body:textArea.val(),
     blog_id: $(this).attr('data-blog'),
+}).then(()=>{
+    textArea.val('');
 })
+
 }
 
 function displayComment(){
